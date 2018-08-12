@@ -1,7 +1,18 @@
 import express from 'express';
-import expresGraphQL from 'express-graphql';
+import graphQL from 'express-graphql';
+import mongoose from 'mongoose';
+import schema from './schema/schema';
 
 const app = express();
+mongoose.connect('mongodb://oti4me:oti4life@ds119572.mlab.com:19572/bookdb-graphql');
+mongoose.connection.once('open', () => {
+  console.log('Connected to the db!!');
+});
+
+app.use('/graphql', graphQL({ 
+  schema,
+  graphiql: true
+}));
 
 const PORT = process.env.PORT || 3002;
 
