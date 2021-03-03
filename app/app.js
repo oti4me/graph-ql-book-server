@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import schema from './schema/schema';
 
 const app = express();
-mongoose.connect('mongodb://oti4me:oti4life@ds119572.mlab.com:19572/bookdb-graphql');
+mongoose.connect('mongodb://username:password@ds119572.mlab.com:19572/bookdb-graphql');
 mongoose.connection.once('open', () => {
   console.log('Connected to the db!!');
 });
